@@ -48,9 +48,12 @@ p {
 
 .description button {
     flex: 1;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 400px;
     align-content: space-around;
     background-color: purple;
     color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 30px;
 }

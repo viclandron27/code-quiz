@@ -1,28 +1,33 @@
+const start = document.getElementById("start");
+const quiz = document.getElementById("question-container");
+const question = document.getElementById("question");  
+const choiceA = document.getElementById("A");
+const choiceB = document.getElementById("B");
+const choiceC = document.getElementById("C");
+const choiceD = document.getElementById("D");
+
 var questions = [
     { 
         q: 'Commonly used data types DO NOT include:', 
         a: {
-            a: "strings",
-            b: ""
+            a: "1. strings",
+            b: "2. booleans",
+            c: "3. alerts",
+            d: "4. numbers"
         }
     },
-    correctAnswer: ""
+    correctAnswer: "c"
     { q: 'There are 365 days in a year.', a: 't' },
     { q: 'There are 42 ounces in a pound.', a: 'f' },
     { q: 'The Declaration of Independence was created in 1745.', a: 'f' },
     { q: 'Bananas are vegetables.', a: 'f' }
   ];
 
-  var score = 0
+function runQuiz() {
+    //for each question...
+    questions.forEach(
 
-  for (var i = 0; i < questions.length; i++) {
-    var answer = confirm(questions[i].q)
-    if ((answer === true && questions[i].a === "t") || (answer === false && questions[i].a === "f")) {
-        alert("You are Correct!")
-        score++;
-    }
-    else {
-        alert("You are Incorrect!")
-    }
+    )
+}
 
-  }
+ 

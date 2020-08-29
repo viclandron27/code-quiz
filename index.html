@@ -11,7 +11,7 @@
     <body>
         <header>
             <p class="high-score">View High Scores</p>
-            <h3 class="time">Time: 0</h3>
+            <h3 class="time" id="timer ">Time: 0</h3>
         </header>
 
         <h1 class="title">Coding Quiz Challenge</h1>
@@ -22,7 +22,15 @@
             <button>Start Quiz</button>
         </section>
 
-        <div id="quiz"></div>
+        <div id="question-container" style="display: none;">
+            <div id="question">Question</div>
+            <div id="answer-buttons"> 
+                <button class="btn" id="A">Answer 1</button>
+                <button class="btn" id="B">Answer 2</button>
+                <button class="btn" id="C">Answer 3</button>
+                <button class="btn" id="D">Answer 4</button>
+            </div>
+        </div>
         <script src = "./assets/js/java.js"></script>
     </body>
 
