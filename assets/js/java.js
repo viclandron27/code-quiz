@@ -6,8 +6,9 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 
+
 //create questions
-var questions = [
+var allQuestions = [
     { 
         question : 'Commonly used data types DO NOT include:', 
         choiceA: "1. strings",
@@ -52,14 +53,38 @@ var questions = [
         choiceD : "4. console.log",
         correct : "D"
     }
-    
+
   ];
 
-function runQuiz() {
-    //for each question...
-    questions.forEach(
+//var lastQuestionIndex = allQuestions.length - 1;
+var runningQuestionIndex = 0;
 
-    )
-} 
+//displays to user each question
+function renderQuestion(){
+    console.log(allQuestions);
+    var q = allQuestions[runningQuestionIndex];
+    question.innerHTML = "<h1>" + q.allQuestions + "<h1>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+    runningQuestionIndex++
+}
+   
+    //renderQuestion();
+
+//check if question is correct
+function checkAnswer(answer) {
+   if (allQuestions[runningQuestionIndex].correct === answer) {
+       alert("Correct!")
+    }
+    else {
+        alert("Wrong")
+        //add time reduction
+    }
+};
+
+start.addEventListener("click", renderQuestion());
+
 
  
