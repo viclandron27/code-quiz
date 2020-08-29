@@ -61,7 +61,6 @@ var allQuestions = [
 
  
 function renderQuestion(){
-  //console.log(allQuestions);
         quiz.removeAttribute('class')
         title.setAttribute('class', 'hide')
         description.setAttribute('class', 'hide')
@@ -73,16 +72,18 @@ function renderQuestion(){
        choiceB.innerHTML = q.choiceB;
        choiceC.innerHTML = q.choiceC;
        choiceD.innerHTML = q.choiceD;
-       runningQuestionIndex++
   };
 
 
 
 //check if question is correct
 function checkAnswer(answer) {
-   if (answer == allQuestions[runningQuestionIndex].correct) {
-       console.log (allQuestions[runningQuestionIndex].correct)
+   console.log(runningQuestionIndex)
+    console.log(answer, allQuestions[runningQuestionIndex].correct) 
+   if (answer === allQuestions[runningQuestionIndex].correct) {
+       //console.log (allQuestions[runningQuestionIndex].correct)
        alert("Correct!")
+       runningQuestionIndex++
         renderQuestion();
     }
     else {

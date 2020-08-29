@@ -57,6 +57,24 @@ p {
     border-radius: 5px;
     padding: 5px 30px;
 }
+.answer-buttons {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+.btn {
+    width: 150px;
+    height: 50px;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    align-items: center;
+}
 
 .hide {
     display: none;
