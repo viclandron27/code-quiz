@@ -1,3 +1,5 @@
+const title = document.getElementById("title");
+const description = document.getElementById ("description");
 const start = document.getElementById("start");
 const quiz = document.getElementById("question-container");
 const question = document.getElementById("question");  
@@ -6,6 +8,8 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 
+ //var lastQuestionIndex = allQuestions.length - 1;
+ var runningQuestionIndex = 0;
 
 //create questions
 var allQuestions = [
@@ -28,7 +32,7 @@ var allQuestions = [
     },
 
     { 
-        question : "Arrays in JavaScript ccan be used to store __________.",
+        question : "Arrays in JavaScript can be used to store __________.",
         choiceA : "1. numbers and strings ",
         choiceB : "2. other arrays",
         choiceC : "3. booleans",
@@ -53,30 +57,33 @@ var allQuestions = [
         choiceD : "4. console.log",
         correct : "D"
     }
-
   ];
 
-//var lastQuestionIndex = allQuestions.length - 1;
-var runningQuestionIndex = 0;
-
-//displays to user each question
+ 
 function renderQuestion(){
-   // console.log(allQuestions);
-    var q = allQuestions[runningQuestionIndex];
-    question.innerHTML = "<h1>" + q.question + "<h1>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
-    runningQuestionIndex++
-}
-   
-    //renderQuestion();
+  //console.log(allQuestions);
+        quiz.removeAttribute('class')
+        title.setAttribute('class', 'hide')
+        description.setAttribute('class', 'hide')
+        start.setAttribute('class', 'hide')
+
+       var q = allQuestions[runningQuestionIndex];
+       question.innerHTML = "<h1>" + q.question + "<h1>";
+       choiceA.innerHTML = q.choiceA;
+       choiceB.innerHTML = q.choiceB;
+       choiceC.innerHTML = q.choiceC;
+       choiceD.innerHTML = q.choiceD;
+       runningQuestionIndex++
+  };
+
+
 
 //check if question is correct
 function checkAnswer(answer) {
-   if (allQuestions[runningQuestionIndex].correct === answer) {
+   if (answer == allQuestions[runningQuestionIndex].correct) {
+       console.log (allQuestions[runningQuestionIndex].correct)
        alert("Correct!")
+        renderQuestion();
     }
     else {
         alert("Wrong")
@@ -84,7 +91,10 @@ function checkAnswer(answer) {
     }
 };
 
-start.addEventListener("click", renderQuestion);
+//call function when user presses start button
+start.addEventListener("click", function(){
+    renderQuestion()
+});
 
 
  

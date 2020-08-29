@@ -57,3 +57,7 @@ p {
     border-radius: 5px;
     padding: 5px 30px;
 }
+
+.hide {
+    display: none;
+}
