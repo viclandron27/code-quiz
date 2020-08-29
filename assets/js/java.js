@@ -61,9 +61,9 @@ var runningQuestionIndex = 0;
 
 //displays to user each question
 function renderQuestion(){
-    console.log(allQuestions);
+   // console.log(allQuestions);
     var q = allQuestions[runningQuestionIndex];
-    question.innerHTML = "<h1>" + q.allQuestions + "<h1>";
+    question.innerHTML = "<h1>" + q.question + "<h1>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
@@ -84,7 +84,7 @@ function checkAnswer(answer) {
     }
 };
 
-start.addEventListener("click", renderQuestion());
+start.addEventListener("click", renderQuestion);
 
 
  
