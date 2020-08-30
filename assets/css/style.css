@@ -79,3 +79,26 @@ p {
 .hide {
     display: none;
 }
+
+.final-score {
+    padding-left: 500px;
+    font-size: 25px;
+}
+
+.initials {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding-left: 0;
+}
+
+.done {
+    padding-right: 240px;
+}
+
+#end-game div {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 500px;
+}
+
