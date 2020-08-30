@@ -12,9 +12,11 @@ const end = document.getElementById("end-game");
 const submit = document.getElementById("submit-initials");
 const highScore = document.getElementById("high-scores");
 const goBack = document.getElementById ("go-back");
-const viewScore = document.getElementById("view-score");
+const viewScore = document.getElementById("view-scores");
 const clearScores = document.getElementById("clear");
 const scoreList = document.getElementById("score-list");
+const correctAnswer = document.getElementById("correct");
+const wrongAnswer = document.getElementById("wrong");
 
 var time = 75;
 var score = 0;
@@ -89,7 +91,8 @@ function renderQuestion() {
         quiz.removeAttribute('class')
         title.setAttribute('class', 'hide')
         description.setAttribute('class', 'hide')
-        start.setAttribute('class', 'hide')  
+        start.setAttribute('class', 'hide') 
+       
 
        var q = allQuestions[runningQuestionIndex];
 
@@ -187,13 +190,15 @@ function checkAnswer(answer) {
 
    if (answer === allQuestions[runningQuestionIndex].correct) {
        //console.log (allQuestions[runningQuestionIndex].correct)
-       alert("Correct!")
+        correctAnswer.removeAttribute('class', 'hide')
+       //alert("Correct!")
        score += 10;
        runningQuestionIndex++
         renderQuestion();
     }
     else {
-        alert("Wrong")
+        //wrongAnswer.removeAttribute('class', 'hide')
+        //alert("Wrong")
         time -= 10;
     }
 };
@@ -218,5 +223,9 @@ clearScores.addEventListener("click", function(){
     clearHighScores()
 })
 
-
- 
+viewScore.addEventListener("click", function(){
+   title.setAttribute('class', 'hide')
+   description.setAttribute('class', 'hide')
+   start.setAttribute('class', 'hide')
+    displayHighScores()
+})
