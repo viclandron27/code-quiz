@@ -19,7 +19,7 @@
         <section class="description" id="description">
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
 
-            <button id="start">Start Quiz</button>
+            <button class="btn"id="start">Start Quiz</button>
         </section>
 
         <div id="question-container" class="hide">
@@ -33,11 +33,21 @@
         </div>
 
         <div id="end-game" class="hide">
-            <h1 class="done">All Done!</h1>
-            <p class="final-score">Your final score is </p>
-            <div>
+            <h1 class="heading">All Done!</h1>
+            <p class="message">Your final score is </p>
+            <div id="submit">
                 <p class="initials">Enter initials: </p>
-                <input type="text" name="initials" class="user-initials" >
+                <input type="text" name="initials" class="user-initials" id="initials">
+                <button class="btn" id="submit-initials" type="submit">Submit</button>
+            </div>
+        </div>
+
+        <div id="high-scores" class="hide">
+            <h1 class="heading">High Scores</h1>
+            <p class="message">1. </p>
+            <div class="high-score-buttons">
+            <button class="btn" id="go-back">Go back</button>
+            <button class="btn" id="clear">Clear high scores</button>
             </div>
         </div>
 

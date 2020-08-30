@@ -9,6 +9,8 @@ const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 const timer = document.getElementById("timer");
 const end = document.getElementById("end-game");
+const submit = document.getElementById("submit-initials");
+const highScore = document.getElementById("high-scores");
 
  //var lastQuestionIndex = allQuestions.length - 1;
  var runningQuestionIndex = 0;
@@ -92,13 +94,41 @@ function renderQuestion() {
        }
   };
 
-//end game so user can put in high score
+
+  //end game so user can put in high score
 function endGame() {
     quiz.setAttribute('class', 'hide')
     end.removeAttribute('class', 'hide')
+    //console.log(submit);
+    
+    submit.addEventListener("click", function(event) {
+        event.preventDefault();
+       
+        var userInitials = document.getElementById("initials").value;
+        localStorage.setItem("highScore", userInitials);
+
+        if (userInitials === "") {
+            displayMessage("error", "You must enter your initials");
+        } else {
+            displayHighScores();
+        }
+
+    })
+
+}
+
+//grab the user input of initials
+function displayHighScores() {
+
+end.setAttribute('class', 'hide')
+highScore.removeAttribute('class', 'hide')
 
 
 
+
+    
+
+//check if input values are empty strings
 }
 
 //check if question is correct

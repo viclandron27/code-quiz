@@ -80,7 +80,7 @@ p {
     display: none;
 }
 
-.final-score {
+.message {
     padding-left: 500px;
     font-size: 25px;
 }
@@ -92,13 +92,24 @@ p {
     padding-left: 0;
 }
 
-.done {
+.heading {
     padding-right: 240px;
+}
+
+.high-score-buttons {
+    margin-left: 480px;
+}
+
+#submit-initials {
+    margin-left: 20px;
 }
 
 #end-game div {
     display: flex;
     flex-wrap: wrap;
     padding-left: 500px;
+    align-content: space-around;
 }
+
+
 
