@@ -176,7 +176,7 @@ function clearHighScores () {
     for (var i=0; i <items.length; i++){
         items[i].remove();
     }
-    
+
     localStorage.removeItem("scores")
 }
 
@@ -206,7 +206,12 @@ start.addEventListener("click", function(){
 
 goBack.addEventListener("click", function(){
     highScore.setAttribute('class', 'hide')
-    endGame()
+    title.setAttribute('class', 'title')
+    title.setAttribute('id', 'title')
+    description.setAttribute('class', 'description')
+    description.setAttribute('id', 'description')
+    start.setAttribute('class', 'btn')
+    start.setAttribute('id', 'start')
 })
 
 clearScores.addEventListener("click", function(){
