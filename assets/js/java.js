@@ -7,6 +7,8 @@ const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
+const timer = document.getElementById("timer");
+const end = document.getElementById("end-game");
 
  //var lastQuestionIndex = allQuestions.length - 1;
  var runningQuestionIndex = 0;
@@ -59,12 +61,23 @@ var allQuestions = [
     }
   ];
 
+// timer counting down from 75
+
  
-function renderQuestion(){
+function renderQuestion() {
         quiz.removeAttribute('class')
         title.setAttribute('class', 'hide')
         description.setAttribute('class', 'hide')
         start.setAttribute('class', 'hide')
+
+        //call the function to run the timer
+        var x = setInterval(function() {
+            var time = 75;
+            timer.innerHTML = "<h3>Timer: " + time + "<h3>";
+        }, 1000);
+
+
+        console.log(timer);
 
        var q = allQuestions[runningQuestionIndex];
        question.innerHTML = "<h1>" + q.question + "<h1>";
@@ -74,7 +87,14 @@ function renderQuestion(){
        choiceD.innerHTML = q.choiceD;
   };
 
+//end game so user can put in high score
+function endGame() {
+    quiz.setAttribute('class')
+    end.removeAttribute('class', 'hide')
 
+
+
+}
 
 //check if question is correct
 function checkAnswer(answer) {

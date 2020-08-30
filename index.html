@@ -11,7 +11,7 @@
     <body>
         <header>
             <p class="high-score">View High Scores</p>
-            <h3 class="time" id="timer ">Time: 0</h3>
+            <h3 class="time" id="timer">Time: 0</h3>
         </header>
 
         <h1 class="title" id="title">Coding Quiz Challenge</h1>
@@ -31,6 +31,16 @@
                 <button class="btn" id="D" onclick="checkAnswer('D')">Answer 4</button>
             </div>
         </div>
+
+        <div id="end-game" class="hide">
+            <h1>All Done!</h1>
+            <p>Your final score is </p>
+            <div>
+                <p>Enter initials: </p>
+                <input type="text" name="initials" class="user-initials" >
+            </div>
+        </div>
+
         <script src = "./assets/js/java.js"></script>
     </body>
 
