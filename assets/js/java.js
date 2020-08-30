@@ -61,8 +61,6 @@ var allQuestions = [
     }
   ];
 
-// timer counting down from 75
-
  
 function renderQuestion() {
         quiz.removeAttribute('class')
@@ -70,7 +68,7 @@ function renderQuestion() {
         description.setAttribute('class', 'hide')
         start.setAttribute('class', 'hide')
 
-        //call the function to run the timer
+        //run the timer
         var x = setInterval(function() {
             var time = 75;
             timer.innerHTML = "<h3>Timer: " + time + "<h3>";
@@ -80,16 +78,23 @@ function renderQuestion() {
         console.log(timer);
 
        var q = allQuestions[runningQuestionIndex];
-       question.innerHTML = "<h1>" + q.question + "<h1>";
-       choiceA.innerHTML = q.choiceA;
-       choiceB.innerHTML = q.choiceB;
-       choiceC.innerHTML = q.choiceC;
-       choiceD.innerHTML = q.choiceD;
+
+        //run end game function in input high score
+       if (q === undefined){
+           endGame()
+       }
+       else {
+        question.innerHTML = "<h1>" + q.question + "<h1>";
+        choiceA.innerHTML = q.choiceA;
+        choiceB.innerHTML = q.choiceB;
+        choiceC.innerHTML = q.choiceC;
+        choiceD.innerHTML = q.choiceD;
+       }
   };
 
 //end game so user can put in high score
 function endGame() {
-    quiz.setAttribute('class')
+    quiz.setAttribute('class', 'hide')
     end.removeAttribute('class', 'hide')
 
 
@@ -98,8 +103,9 @@ function endGame() {
 
 //check if question is correct
 function checkAnswer(answer) {
-   console.log(runningQuestionIndex)
-    console.log(answer, allQuestions[runningQuestionIndex].correct) 
+   //console.log(runningQuestionIndex)
+    //console.log(answer, allQuestions[runningQuestionIndex].correct) 
+
    if (answer === allQuestions[runningQuestionIndex].correct) {
        //console.log (allQuestions[runningQuestionIndex].correct)
        alert("Correct!")
