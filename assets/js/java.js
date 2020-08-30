@@ -11,6 +11,15 @@ const timer = document.getElementById("timer");
 const end = document.getElementById("end-game");
 const submit = document.getElementById("submit-initials");
 const highScore = document.getElementById("high-scores");
+const goBack = document.getElementById ("go-back");
+const viewScore = document.getElementById("view-score");
+const clearScores = document.getElementById("clear");
+const scoreList = document.getElementById("score-list");
+
+var time = 75;
+var score = 0;
+
+var startGame = false;
 
  //var lastQuestionIndex = allQuestions.length - 1;
  var runningQuestionIndex = 0;
@@ -63,21 +72,24 @@ var allQuestions = [
     }
   ];
 
+//run the timer
+    var x = setInterval(function() { 
+        if (startGame === true){
+        time--
+        }
+        timer.innerHTML = "<h3>Timer: " + time + "<h3>";
+
+        if (time === 0) {
+            alert("You ran out of time. The game is over!")
+            clearInterval(x)
+        }
+    }, 1000);
  
 function renderQuestion() {
         quiz.removeAttribute('class')
         title.setAttribute('class', 'hide')
         description.setAttribute('class', 'hide')
-        start.setAttribute('class', 'hide')
-
-        //run the timer
-        var x = setInterval(function() {
-            var time = 75;
-            timer.innerHTML = "<h3>Timer: " + time + "<h3>";
-        }, 1000);
-
-
-        console.log(timer);
+        start.setAttribute('class', 'hide')  
 
        var q = allQuestions[runningQuestionIndex];
 
@@ -100,19 +112,50 @@ function endGame() {
     quiz.setAttribute('class', 'hide')
     end.removeAttribute('class', 'hide')
     //console.log(submit);
+
+    startGame = false;
+
+    const finalScore = document.getElementById("final-score");
+    finalScore.innerHTML = "<p>You're final score is " + score + ".<p>";
     
     submit.addEventListener("click", function(event) {
         event.preventDefault();
        
         var userInitials = document.getElementById("initials").value;
-        localStorage.setItem("highScore", userInitials);
+        if (userInitials.length > 0){
+            document.getElementById("score-list").value = userInitials
+            var save = {
+                id: userInitials,
+                timer: time
+            }
+            var highScores = JSON.parse(localStorage.getItem("scores"))
+            if (highScores != undefined) {
+                highScores[highScores.length] = save
+                localStorage.setItem("scores", JSON.stringify(highScores))
+            }
+            else {
+                var highScores = [save]
+                localStorage.setItem("scores", JSON.stringify(highScores))
+            }
+            
+        }
 
         if (userInitials === "") {
             displayMessage("error", "You must enter your initials");
         } else {
             displayHighScores();
         }
-
+       
+        var getScore = JSON.parse(localStorage.getItem("scores"))
+        if (getScore != undefined) {
+            for (var i = 0; i < getScore.length; i++) {
+                var scoreItem = getScore[i]
+                var listItem = document.createElement("li")
+                listItem.classList.add("score-list-item")
+                listItem.textContent = scoreItem.id + ": " + scoreItem.timer
+                document.getElementById("score-list").appendChild(listItem)
+            }
+        }
     })
 
 }
@@ -120,15 +163,21 @@ function endGame() {
 //grab the user input of initials
 function displayHighScores() {
 
-end.setAttribute('class', 'hide')
-highScore.removeAttribute('class', 'hide')
+    end.setAttribute('class', 'hide')
+    highScore.removeAttribute('class', 'hide')
 
+    startGame = false;
 
+}
 
-
+//clear High Scores
+function clearHighScores () {
+    var items = document.getElementsByClassName("score-list-item");
+    for (var i=0; i <items.length; i++){
+        items[i].remove();
+    }
     
-
-//check if input values are empty strings
+    localStorage.removeItem("scores")
 }
 
 //check if question is correct
@@ -139,19 +188,30 @@ function checkAnswer(answer) {
    if (answer === allQuestions[runningQuestionIndex].correct) {
        //console.log (allQuestions[runningQuestionIndex].correct)
        alert("Correct!")
+       score += 10;
        runningQuestionIndex++
         renderQuestion();
     }
     else {
         alert("Wrong")
-        //add time reduction
+        time -= 10;
     }
 };
 
 //call function when user presses start button
 start.addEventListener("click", function(){
     renderQuestion()
+    startGame = true;
 });
+
+goBack.addEventListener("click", function(){
+    highScore.setAttribute('class', 'hide')
+    endGame()
+})
+
+clearScores.addEventListener("click", function(){
+    clearHighScores()
+})
 
 
  

@@ -10,7 +10,7 @@
 
     <body>
         <header>
-            <p class="high-score">View High Scores</p>
+            <p class="high-score" id="view-scores">View High Scores</p>
             <h3 class="time" id="timer">Time: 0</h3>
         </header>
 
@@ -34,7 +34,7 @@
 
         <div id="end-game" class="hide">
             <h1 class="heading">All Done!</h1>
-            <p class="message">Your final score is </p>
+            <p class="message" id="final-score">Your final score is </p>
             <div id="submit">
                 <p class="initials">Enter initials: </p>
                 <input type="text" name="initials" class="user-initials" id="initials">
@@ -44,7 +44,7 @@
 
         <div id="high-scores" class="hide">
             <h1 class="heading">High Scores</h1>
-            <p class="message">1. </p>
+            <ol class="message" id="score-list"></ol>
             <div class="high-score-buttons">
             <button class="btn" id="go-back">Go back</button>
             <button class="btn" id="clear">Clear high scores</button>
