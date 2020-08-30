@@ -190,15 +190,13 @@ function checkAnswer(answer) {
 
    if (answer === allQuestions[runningQuestionIndex].correct) {
        //console.log (allQuestions[runningQuestionIndex].correct)
-        correctAnswer.removeAttribute('class', 'hide')
-       //alert("Correct!")
+       alert("Correct!")
        score += 10;
        runningQuestionIndex++
         renderQuestion();
     }
     else {
-        //wrongAnswer.removeAttribute('class', 'hide')
-        //alert("Wrong")
+        alert("Wrong")
         time -= 10;
     }
 };
